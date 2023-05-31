@@ -9,7 +9,7 @@ import com.example.core.itempipeline.ItemPipeline;
 import com.example.model.Request;
 import com.example.model.Response;
 import com.example.queue.ThreadSafeQueue;
-import com.example.core.spider.Spider;
+import com.example.spider.Spider;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -23,7 +23,6 @@ import static com.example.util.Utils.convertFileToClazz;
 import static com.example.util.Utils.getAllClassFiles;
 
 public class Container {
-
 
 //    Build Spider
     public static Spider buildSpider(String name) {

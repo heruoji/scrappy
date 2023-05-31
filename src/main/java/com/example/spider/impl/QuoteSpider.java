@@ -1,13 +1,12 @@
-package com.example.core.spider.impl;
+package com.example.spider.impl;
 
-import com.example.core.spider.Spider;
+import com.example.spider.Spider;
+import com.example.model.SpiderResponseBuilder;
 import com.example.model.item.impl.AuthorItem;
-import com.example.model.item.Item;
 import com.example.model.Request;
 import com.example.model.Response;
 import com.example.model.SpiderResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,16 +19,14 @@ public class QuoteSpider implements Spider {
     }
 
     public SpiderResponse parseMain(Response response) {
-        SpiderResponse result = new SpiderResponse();
         List<Request> authorRequests = response.select(".author + a").stream().map(link -> new Request(link.absUrl("href"), "parseAuthor")).collect(Collectors.toList());
         List<Request> paginationRequests = response.select("li.next a").stream().map(link -> new Request(link.absUrl("href"), "parseMain")).toList();
         authorRequests.addAll(paginationRequests);
-        result.setRequests(authorRequests);
-        return result;
+
+        return new SpiderResponseBuilder().requests(authorRequests).build();
     }
 
     public SpiderResponse parseAuthor(Response response) {
-        SpiderResponse result = new SpiderResponse();
         String name = response.select("h3.author-title").text();
         String birthday = response.select(".author-born-date").text();
         String bio = response.select(".author-description").text();
@@ -37,9 +34,7 @@ public class QuoteSpider implements Spider {
         item.name = name;
         item.birthday = birthday;
         item.bio = bio;
-        List<Item> items = new ArrayList<>();
-        items.add(item);
-        result.setItems(items);
-        return result;
+
+        return new SpiderResponseBuilder().addItem(item).build();
     }
 }

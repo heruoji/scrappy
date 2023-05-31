@@ -5,7 +5,7 @@ import com.example.model.Request;
 import com.example.model.Response;
 import com.example.model.SpiderResponse;
 import com.example.queue.ThreadSafeQueue;
-import com.example.core.spider.Spider;
+import com.example.spider.Spider;
 
 import java.util.HashSet;
 import java.util.List;

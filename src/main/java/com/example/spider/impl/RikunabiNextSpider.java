@@ -1,6 +1,6 @@
-package com.example.core.spider.impl;
+package com.example.spider.impl;
 
-import com.example.core.spider.Spider;
+import com.example.spider.Spider;
 import com.example.model.item.impl.CrawlListItem;
 import com.example.model.item.Item;
 import com.example.model.Request;

@@ -1,4 +1,4 @@
-package com.example.core.spider;
+package com.example.spider;
 
 import com.example.model.Request;
 import com.example.model.Response;

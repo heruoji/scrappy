@@ -8,11 +8,10 @@ import com.example.model.Request;
 import com.example.model.Response;
 import com.example.queue.ThreadSafeQueue;
 import com.example.core.scraper.ScraperThread;
-import com.example.core.spider.Spider;
+import com.example.spider.Spider;
 import com.example.util.args.Args;
 import com.example.util.args.ArgsException;
 
-import javax.annotation.concurrent.ThreadSafe;
 import java.util.List;
 
 import static com.example.core.Container.*;

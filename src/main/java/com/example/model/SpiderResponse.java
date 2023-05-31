@@ -9,6 +9,14 @@ public class SpiderResponse {
     private List<Request> requests;
     private List<Item> items;
 
+    public SpiderResponse() {
+    }
+
+    public SpiderResponse(List<Request> requests, List<Item> items) {
+        this.requests = requests;
+        this.items = items;
+    }
+
     public void setRequests(List<Request> requests) {
         this.requests = requests;
     }

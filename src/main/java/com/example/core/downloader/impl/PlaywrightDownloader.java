@@ -1,7 +1,7 @@
 package com.example.core.downloader.impl;
 
 import com.example.core.downloader.DownloaderThread;
-import com.example.exception.PlaywrightDownloaderException;
+import com.example.exception.DownloaderHttpResponseException;
 import com.example.model.Request;
 import com.example.model.Response;
 import com.example.queue.ThreadSafeQueue;
@@ -47,7 +47,7 @@ public class PlaywrightDownloader extends DownloaderThread {
         }
         com.microsoft.playwright.Response response = page.navigate(url);
         if (!response.ok()) {
-            throw new PlaywrightDownloaderException(response.status(), "html取得エラー");
+            throw new DownloaderHttpResponseException(response.status(), String.format("以下のURLの取得に失敗しました。'%s'", url));
         }
         page.waitForLoadState(LoadState.LOAD);
         return new Response(url, response.status(), response.headers(), page.content().getBytes(), request);
